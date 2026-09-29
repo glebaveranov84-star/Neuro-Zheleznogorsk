@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Нейро-Железногорск — город, каким он мог бы быть</title>
+<meta name="description" content="Новости из параллельного Железногорска: ИИ-визуализации города с элементами игр и фильмов. Всё — художественный вымысел.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+</head>
+<body>
+
+<div class="noise"></div>
+
+<!-- ============ ДИСКЛЕЙМЕР ============ -->
+<div class="disclaimer">
+  <div class="container">
+    <span class="dot">⚠</span>
+    <span><b>Внимание:</b> это художественный вымысел. Все изображения сгенерированы нейросетями, все «новости» — выдумка автора. Совпадения с реальностью случайны.</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark">◈</span>
+      <span class="logo-text">НЕЙРО-<em>ЖЕЛЕЗНОГОРСК</em></span>
+    </a>
+    <nav class="nav">
+      <a href="#news">Новости</a>
+      <a href="#about">О проекте</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ ГЛАВНАЯ ============ -->
+  <div id="home-view">
+
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-kicker">◈ AI-визуализации · параллельная реальность · 2026</div>
+        <h1 class="hero-title">
+          Железногорск,<br>
+          <span class="grad">каким он мог бы быть</span>
+        </h1>
+        <!-- TODO: текст под заголовком — напиши сам -->
+        <p class="hero-sub"></p>
+        <div class="hero-stats">
+          <div class="stat"><b id="stat-count">0</b><span>публикаций</span></div>
+          <div class="stat"><b id="stat-cats">0</b><span>вселенных</span></div>
+          <div class="stat"><b>∞</b><span>вариантов будущего</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="news-section">
+      <div class="container">
+
+        <div class="toolbar">
+          <div class="filters" id="filters"></div>
+          <div class="search-wrap">
+            <input type="search" id="search" placeholder="Поиск по новостям…" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="grid" id="grid"></div>
+
+        <div class="empty" id="empty" hidden>
+          <div class="empty-icon">◈</div>
+          <p id="empty-text">Ничего не найдено. Попробуй другую категорию или запрос.</p>
+          <p class="empty-hint" id="empty-hint" hidden>
+            Похоже, новостей ещё нет. Добавь их в массив <code>NEWS</code> в файле <code>news.js</code>.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="container about-inner">
+        <div class="about-text">
+          <h2>О проекте</h2>
+          <p>
+            «Нейро-Железногорск» — это художественный эксперимент. Мы берём настоящие
+            снимки города и с помощью ИИ достраиваем альтернативные версии городского пространства.
+          </p>
+          <p>
+            <strong>Всё, что вы видите на этом сайте, — выдумка.</strong>
+            Изображения созданы нейросетями на основе реальных фотографий, тексты новостей
+            написаны искусственным интеллектом в художественных целях. Никакие события,
+            описанные здесь, не происходили и не происходят в реальном Железногорске.
+          </p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-row"><span>Формат</span><b>ИИ-визуализации + новости</b></div>
+          <div class="about-card-row"><span>Инструменты</span><b>DeepSeek · DALL-E</b></div>
+          <div class="about-card-row"><span>Референсы</span><b>Игры, фильмы, арт</b></div>
+          <div class="about-card-row"><span>Реальность</span><b>Художественный вымысел</b></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============ СТРАНИЦА СТАТЬИ ============ -->
+  <div id="article-view" class="article-view" hidden>
+    <div class="container article-container">
+
+      <button class="back-btn" data-back>
+        <span aria-hidden="true">←</span> Назад к новостям
+      </button>
+
+      <article class="article">
+        <header class="article-head">
+          <div class="article-meta">
+            <span class="article-cat" id="a-cat"></span>
+            <time id="a-date"></time>
+          </div>
+          <h1 class="article-title" id="a-title"></h1>
+          <div class="article-tags" id="a-tags"></div>
+        </header>
+
+        <div class="compare" id="compare" hidden>
+          <img class="compare-img compare-before" id="a-before" alt="Исходное фото">
+          <img class="compare-img compare-after" id="a-after" alt="ИИ-визуализация">
+          <div class="compare-label compare-label-l">ДО</div>
+          <div class="compare-label compare-label-r">ПОСЛЕ</div>
+          <div class="compare-handle"><span></span></div>
+          <input type="range" class="compare-range" id="range" min="0" max="100" value="50" aria-label="Сравнение до и после">
+        </div>
+
+        <div class="article-body" id="a-body"></div>
+
+        <footer class="article-foot">
+          <div class="article-src" id="a-src"></div>
+          <div class="article-disclaimer">
+            <span>⚠</span>
+            <div><b>Это вымысел.</b> Текст и изображение созданы искусственным интеллектом
+            в творческих целях. Описанных событий не было и не происходит в реальности.</div>
+          </div>
+        </footer>
+      </article>
+
+      <!-- ============ КОММЕНТАРИИ ============ -->
+      <section class="comments" id="comments">
+        <h3 class="comments-title">
+          Комментарии <span class="comments-count" id="comments-count">0</span>
+        </h3>
+
+        <form class="comment-form" id="comment-form" novalidate>
+          <div class="comment-form-row">
+            <input type="text" id="comment-author" class="comment-input"
+                   placeholder="Ваше имя (необязательно)" maxlength="40" autocomplete="off">
+          </div>
+          <textarea id="comment-text" class="comment-textarea"
+                    placeholder="Напишите комментарий…" maxlength="800" required></textarea>
+          <div class="comment-form-foot">
+            <span class="comment-hint" id="comment-hint"></span>
+            <button type="submit" class="comment-submit">Отправить</button>
+          </div>
+        </form>
+
+        <div class="comments-list" id="comments-list"></div>
+      </section>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-logo">◈ НЕЙРО-ЖЕЛЕЗНОГОРСК</div>
+      <p class="footer-note">
+        <b>Дисклеймер:</b> все изображения сгенерированы ИИ, все тексты — художественный вымысел.
+        Проект не связан с реальными событиями, организациями и людьми.
+      </p>
+    </div>
+    <div class="footer-copy">© <span id="year"></span> Нейро-Железногорск</div>
+  </div>
+</footer>
+
+<script src="news.js"></script>
+<!-- Firebase SDK (compat-версия) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="comments.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
